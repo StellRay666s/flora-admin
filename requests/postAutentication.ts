@@ -9,3 +9,5 @@ async function postAutentication(email: string, password: string) {
 
   return response
 }
+
+export { postAutentication }
