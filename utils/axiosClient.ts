@@ -1,9 +1,6 @@
 import axios, {AxiosRequestConfig}from 'axios'
 
-
-
- const accessToken = window.localStorage.getItem("accessToken")
-
+const accessToken = window.localStorage.getItem("accessToken")
 
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_API_KEY,
