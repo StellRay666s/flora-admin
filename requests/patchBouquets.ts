@@ -1,6 +1,6 @@
 import { axiosClient } from '~/utils/axiosClient'
 
-async function patchClient(
+async function patchBouquet(
   _id: number,
   title: string,
   image: string,
@@ -24,4 +24,4 @@ async function patchClient(
   return response
 }
 
-export { patchClient }
+export { patchBouquet }
