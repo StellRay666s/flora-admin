@@ -1,4 +1,4 @@
-import { axiosClient } from '~/utils/axiosClient'
+import { axiosClient } from '@/utils/axiosClient'
 
 async function getUsers() {
   const response = await axiosClient.get<User[]>('/users')
