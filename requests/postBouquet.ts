@@ -1,4 +1,4 @@
-import { axiosClient } from '~/utils/axiosClient'
+import { axiosClient } from '@/utils/axiosClient'
 
 async function postBouquet(
   title: string,

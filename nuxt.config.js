@@ -38,6 +38,10 @@ export default {
     'nuxt-buefy',
   ],
 
+  env: {
+    baseUrl: process.env.NUXT_ENV_COOL_WORD,
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
