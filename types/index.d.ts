@@ -14,8 +14,13 @@ interface Bouquet {
 }
 
 interface User {
-  email: string
-  name: string
-  address: string
-  phone: number
+  user: {
+    id: number
+    email: string
+    password: string
+    address: string
+    phone: number
+    name: string
+    isAuth: boolean
+  }
 }
