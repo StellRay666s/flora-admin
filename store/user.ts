@@ -7,13 +7,13 @@ export const state = () => ({
     address: null,
     phone: null,
     name: null,
-    isAuth: false,
   },
+  isAuth: false,
 })
 
 export const mutations: MutationTree<User> = {
   addUser(state, payload) {
     state.user = payload
-    state.user.isAuth = true
+    state.isAuth = true
   },
 }
