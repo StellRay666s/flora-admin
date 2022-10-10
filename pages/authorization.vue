@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Admin Login</h1>
+    <h1>Admin {{hello}} Login</h1>
     <div class="wrapper">
       <b-field label="Email">
         <b-input type="email" v-model="email"></b-input>
@@ -30,8 +30,9 @@ export default {
       const response = await postAutentication(this.email, this.password)
       const accessToken = response.data.accessToken
       localStorage.setItem('accessToken', accessToken)
-    }
-  }
+      this.$store.commit('user/addUser', response.data.user)
+    },
+  },
 }
 </script>
 
