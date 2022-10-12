@@ -27,10 +27,14 @@ export default {
   },
   methods: {
     async login() {
+
+     
       const response = await postAutentication(this.email, this.password)
       const accessToken = response.data.accessToken
       localStorage.setItem('accessToken', accessToken)
       this.$store.commit('user/addUser', response.data.user)
+      this.$nuxt.$router.replace({path:'/user'})
+ 
     },
   },
 }
