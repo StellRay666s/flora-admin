@@ -75,16 +75,16 @@ export default {
 
     strikeDash() {
       this.users.map((user) =>
-        user.hasOwnProperty('name') ? user.name : (user.name = '____')
+        user.hasOwnProperty('name') ? user : (user.name = '____')
       )
       this.users.map((user) =>
-        user.hasOwnProperty('address') ? user.name : (user.address = '____')
+        user.hasOwnProperty('address') ? user : (user.address = '____')
       )
       this.users.map((user) =>
-        user.hasOwnProperty('phone') ? user.name : (user.phone = '____')
+        user.hasOwnProperty('phone') ? user : (user.phone = '____')
       )
       this.users.map((user) =>
-        user.hasOwnProperty('email') ? user.name : (user.email = '____')
+        user.hasOwnProperty('email') ? user : (user.email = '____')
       )
     },
   },
