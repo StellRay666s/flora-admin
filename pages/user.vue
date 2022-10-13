@@ -27,14 +27,7 @@ export default {
 
   data() {
     return {
-      users: [
-        {
-          name: '',
-          email: '',
-          phone: '',
-          address: '',
-        },
-      ],
+      users: [],
       columns: [
         { label: 'email', field: 'email', width: 200, centered: true },
         { label: 'name', field: 'name', width: 200, centered: true },

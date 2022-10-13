@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 console.log(process.env.BASE_URL)
 
 const axiosClient = axios.create({
-  baseURL: "https://flora-api.onrender.com",
+  baseURL: process.env.NUXT_ENV_COOL_WORD,
   timeout: 9999999999,
 })
 

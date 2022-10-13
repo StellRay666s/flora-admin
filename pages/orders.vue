@@ -1,17 +1,15 @@
 <template>
-    <div>
-        <TheHeader/>
-    </div>
+  <div>
+    <TheHeader />
+  </div>
 </template>
 
 <script>
-import TheHeader from '~/components/TheHeader.vue';
-    export default {
-    name: "OrdersPage",
-    components: { TheHeader }
+import TheHeader from '~/components/TheHeader.vue'
+export default {
+  name: 'OrdersPage',
+  components: { TheHeader },
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
