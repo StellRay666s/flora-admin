@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Admin {{hello}} Login</h1>
+    <h1>Admin {{ hello }} Login</h1>
     <div class="wrapper">
       <b-field label="Email">
         <b-input type="email" v-model="email"></b-input>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
     }
   },
   methods: {
@@ -31,6 +31,7 @@ export default {
       const accessToken = response.data.accessToken
       localStorage.setItem('accessToken', accessToken)
       this.$store.commit('user/addUser', response.data.user)
+      this.$nuxt.$router.replace({ path: '/user' })
     },
   },
 }
@@ -40,7 +41,7 @@ export default {
 h1 {
   font-size: 30px;
   text-align: center;
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 .wrapper {
