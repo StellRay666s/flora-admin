@@ -93,7 +93,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
   width: 1400px;
   margin: 0 auto;
