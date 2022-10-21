@@ -22,7 +22,7 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <nuxt-link to="/logout" class="button is-primary"> Выйти </nuxt-link>
+          <button @click="logout" class="button is-primary">Выйти</button>
         </div>
       </b-navbar-item>
     </template>
@@ -32,6 +32,13 @@
 <script>
 export default {
   name: 'TheHeader',
+
+  methods: {
+    logout() {
+      window.localStorage.setItem('accessToken', '')
+      this.$router.push('/authorization')
+    },
+  },
 }
 </script>
 

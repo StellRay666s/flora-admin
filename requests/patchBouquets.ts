@@ -11,7 +11,7 @@ async function patchBouquet(
   height: number,
   rating: number
 ) {
-  const response = await axiosClient.patch(`/bouquet/${_id}`, {
+  const response = await axiosClient.patch(`/bouquets/${_id}`, {
     title,
     image,
     subTitle,

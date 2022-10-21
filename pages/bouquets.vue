@@ -3,7 +3,13 @@
     <TheHeader />
     <div class="wrapper">
       <h1>Список букетов:</h1>
-      <b-table :data="bouquets" :columns="columns" />
+      <b-table
+        :data="bouquets"
+        :selected.sync="selected"
+        @dblclick="checkSelected(selected._id)"
+        focusable
+        :columns="columns"
+      />
       <div class="paginate">
         <b-pagination
           :total="total"
@@ -25,9 +31,10 @@ export default {
   components: { TheHeader },
 
   data() {
-    return {
-      bouquets: [],
+    const bouquets = []
 
+    return {
+      bouquets,
       columns: [
         { label: 'title', field: 'title', width: 200, centered: true },
         { label: 'price', field: 'price', width: 200, centered: true },
@@ -36,6 +43,8 @@ export default {
         { label: 'height', field: 'height', width: 200, centered: true },
       ],
 
+      id: '',
+      selected: bouquets,
       total: 0,
       current: 1,
       perPage: 10,
@@ -49,6 +58,7 @@ export default {
     this.$nextTick(async function fetchBouquets() {
       const response = await getBouquets()
       this.bouquets = response.data.data
+      this.id = this.selected._id
     })
   },
   watch: {
@@ -72,6 +82,11 @@ export default {
       getBouquets((this.countItem -= 10))
       const response = await getBouquets(this.current)
       this.bouquets = response.data.data
+    },
+
+    checkSelected(id) {
+      this.$router.push(`/product/${id}`)
+      console.log(id)
     },
   },
 }
