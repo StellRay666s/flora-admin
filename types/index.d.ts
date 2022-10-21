@@ -21,6 +21,6 @@ interface User {
     address: string
     phone: number
     name: string
-  }
+  } 
   isAuth: boolean
 }

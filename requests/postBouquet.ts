@@ -2,7 +2,7 @@ import { axiosClient } from '@/utils/axiosClient'
 
 async function postBouquet(
   title: string,
-  descripttion: string,
+  description: string,
   height: number,
   image: string,
   price: number,
@@ -12,7 +12,7 @@ async function postBouquet(
 ) {
   const response = await axiosClient.post('/bouquets', {
     title: title,
-    descripttion: descripttion,
+    description: description,
     height: height,
     image: image,
     price: price,

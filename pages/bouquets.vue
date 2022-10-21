@@ -3,6 +3,9 @@
     <TheHeader />
     <div class="wrapper">
       <h1>Список букетов:</h1>
+      <b-button @click="newProduct" class="new-prod-btn" type="is-primary"
+        >Добавить +</b-button
+      >
       <b-table
         :data="bouquets"
         :selected.sync="selected"
@@ -86,10 +89,18 @@ export default {
 
     checkSelected(id) {
       this.$router.push(`/product/${id}`)
-      console.log(id)
+    },
+
+    newProduct() {
+      this.$nuxt.$router.replace({ path: '/newproduct' })
     },
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.new-prod-btn {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+</style>

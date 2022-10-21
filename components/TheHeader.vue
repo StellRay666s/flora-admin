@@ -10,7 +10,7 @@
     </template>
     <template #start>
       <b-navbar-item>
-        <nuxt-link tag="to" to="/user"> Пользователи </nuxt-link>
+        <nuxt-link tag="to" to="/"> Пользователи </nuxt-link>
       </b-navbar-item>
       <b-navbar-item>
         <nuxt-link tag="to" to="/orders"> Заказы </nuxt-link>
@@ -37,6 +37,14 @@ export default {
     logout() {
       window.localStorage.setItem('accessToken', '')
       this.$router.push('/authorization')
+      this.$store.commit('user/logoutUser', {
+        id: null,
+        email: null,
+        password: null,
+        address: null,
+        phone: null,
+        name: null,
+      })
     },
   },
 }

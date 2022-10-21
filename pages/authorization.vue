@@ -31,7 +31,7 @@ export default {
       const accessToken = response.data.accessToken
       localStorage.setItem('accessToken', accessToken)
       this.$store.commit('user/addUser', response.data.user)
-      this.$nuxt.$router.replace({ path: '/user' })
+      this.$nuxt.$router.replace({ path: '/' })
     },
   },
 }

@@ -8,7 +8,7 @@
         </b-field>
         <b-field label="Subtitle">
           <b-input
-            style="width: 300px"
+            style="width: 200px"
             type="text"
             v-model="bouquet.subTitle"
           ></b-input>
@@ -20,119 +20,92 @@
             v-model="bouquet.description"
           ></b-input>
         </b-field>
-
         <b-field label="Image">
           <div class="image">
-            <img :src="bouquet.image" />
-            <input
-              type="file"
-              @change="addImage"
+            <img :src="base64prefix + bouquet.image" />
+            <b-input
+              type="textarea"
               class="area"
-              :model="bouquet.image"
-            />
+              v-model="bouquet.image"
+            ></b-input>
           </div>
         </b-field>
       </div>
       <div class="second-block">
         <b-field label="Price">
           <b-input
-            style="width: 300px"
+            style="width: 100px"
             type="text"
             v-model="bouquet.price"
           ></b-input>
         </b-field>
         <b-field label="Rating">
           <b-input
-            style="width: 300px"
+            style="width: 100px"
             type="text"
             v-model="bouquet.rating"
           ></b-input>
         </b-field>
         <b-field label="Width">
           <b-input
-            style="width: 300px"
+            style="width: 100px"
             type="text"
             v-model="bouquet.width"
           ></b-input>
         </b-field>
         <b-field label="Height">
           <b-input
-            style="width: 300px"
+            style="width: 100px"
             type="text"
             v-model="bouquet.height"
           ></b-input>
         </b-field>
-        <b-field label="Bonuses">
-          <b-input
-            style="width: 300px"
-            type="text"
-            v-model="bouquet.bonuses"
-          ></b-input>
-        </b-field>
       </div>
-      <b-button class="btn" @click="patchData" type="is-primary"
-        >Сохранить измнения</b-button
+      <b-button class="btn" @click="addProduct" type="is-primary"
+        >Добавить</b-button
       >
     </div>
   </div>
 </template>
 
 <script>
-import { getBouquet } from '@/requests/getBouquet'
-import { patchBouquet } from '@/requests/patchBouquets'
-import TheHeader from '~/components/TheHeader.vue'
+import { postBouquet } from '~/requests/postBouquet'
 
 export default {
-  components: { TheHeader },
-
   data() {
     return {
-      bouquet: {},
+      bouquet: {
+        title: '',
+        subTitle: '',
+        description: '',
+        price: null,
+        image: '',
+        rating: null,
+        width: null,
+        height: null,
+      },
+      base64prefix: 'data:image/png;base64, ',
     }
   },
 
-  mounted() {
-    this.$nextTick(async function fetchBouquet() {
-      const response = await getBouquet(this.$route.params.id)
-      this.bouquet = response.data
-    })
-  },
-
   methods: {
-    async patchData() {
-      const response = await patchBouquet(
-        this.bouquet._id,
+    async addProduct() {
+      const response = await postBouquet(
         this.bouquet.title,
-        this.bouquet.image,
-        this.bouquet.subTitle,
         this.bouquet.description,
-        this.bouquet.price,
-        this.bouquet.width,
         this.bouquet.height,
-        this.bouquet.rating
+        this.bouquet.image,
+        this.bouquet.price,
+        this.bouquet.rating,
+        this.bouquet.subTitle,
+        this.bouquet.width
       )
-
       if (response.status === 200) {
         this.$buefy.notification.open({
-          message: 'Успешно сохранено!',
+          message: 'Успешно добавлено!',
           type: 'is-primary',
         })
       }
-    },
-
-    async addImage(event) {
-      const file = event.target.files[0]
-
-      const toBase64 = (file) =>
-        new Promise((resolve, reject) => {
-          const reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onload = () => resolve(reader.result)
-          reader.onerror = (error) => reject(error)
-        })
-
-      const encode = await toBase64(file)
-      this.bouquet.image = encode
     },
   },
 }

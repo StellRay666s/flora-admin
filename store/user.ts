@@ -16,4 +16,12 @@ export const mutations: MutationTree<User> = {
     state.user = payload
     state.isAuth = true
   },
+
+  logoutUser(state,payload){
+    state.user = payload,
+    state.isAuth = false
+
+
+  }
+
 }
